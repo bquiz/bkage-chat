@@ -229,7 +229,9 @@ $(function(){
             else{
                 outputHTML = templateHTML.replaceAll('{{elementClasses}}', classes.normal + ' ' + selfClass);
             }
-            outputHTML = outputHTML.replaceAll('{{author}}', msgData.author).replaceAll('{{msg}}', msgData.msg);
+            outputHTML = outputHTML.replaceAll('{{author}}', msgData.author).replaceAll('{{msg}}', msgData.msg).replace(/(http:\/\/|https:\/\/|www\.)[^ <]+/g, function(match){
+                return '<a href="' + match + '" target="_blank">' + match + '</a>';
+            });
             $chat.append(outputHTML);
         }
 
