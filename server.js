@@ -1,15 +1,15 @@
 //global config
-var express = require('./express'),
+var express = require('express'),
 	app = express(),
-	server = require('./http').createServer(app),
-	portfinder = require('./portfinder'),
-	colors = require('./colors'),
-	io = require('./socket.io').listen(server),
+	server = require('http').createServer(app),
+	portfinder = require('portfinder'),
+	colors = require('colors'),
+	io = require('socket.io').listen(server),
     baseDirectory = __dirname;
 
 
 //port listiner
-var portListiner = require('./server/portListiner')(portfinder, server, colors);
+var portListiner = require('./server/portListiner')(portfinder, server, colors, app);
 
 //express node config
 var expressConfig = require('./server/expressConfig')(app, express, baseDirectory);

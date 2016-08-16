@@ -1,5 +1,5 @@
 
-module.exports = function(portfinder, server, colors){
+module.exports = function(portfinder, server, colors, app){
     portfinder.basePort = 80;	//default port
     app.set('port', (process.env.PORT || 5000))
     server.listen(app.get('port'), function(){
