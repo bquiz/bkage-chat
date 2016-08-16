@@ -10,9 +10,9 @@
   "license": "ISC",
   "devDependencies": {
     "bower": "^1.7.9",
+    "colors": "^1.1.2",
     "express": "^4.14.0",
     "portfinder": "^1.0.6",
-    "socket-io": "0.0.0",
     "socketio": "^1.0.0"
   }
 }
