@@ -1,0 +1,18 @@
+body{
+	margin-top:60px;
+}
+#messageChat{
+	display:none;
+}
+.chat li{
+	list-style:none;
+}
+.chat li strong{
+	display:inline-block;
+	margin-right:5px;
+}
+.chat{
+	height:450px;
+	position:relative;
+	overflow:auto;
+}
