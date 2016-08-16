@@ -11,6 +11,7 @@
   "devDependencies": {
     "bower": "^1.7.9",
     "express": "^4.14.0",
+    "portfinder": "^1.0.6",
     "socket-io": "0.0.0",
     "socketio": "^1.0.0"
   }
