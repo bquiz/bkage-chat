@@ -41,7 +41,23 @@ var appHelpers = {
         roomName = roomName || 'public';
         appArrays.rooms[roomName].messages.push({msg:message, author: 'System', type: type});
         vipNamespace.to(roomName).emit('new message', {msg: message, author: 'System', type: type});
-    }
+    },
+    checkIfUsernameExist: function(testName){
+        var checker = false;
+        
+        for(var room in appArrays.rooms){
+          if(appArrays.rooms.hasOwnProperty(room)){
+              if(appArrays.rooms[room].users.indexOf(testName) > -1){
+                  checker = true
+              }
+          }
+            //forbid System name
+            if(testName === 'System'){
+                checker = true;
+            }
+}
+        return checker;
+    },
 }
 
 
@@ -57,23 +73,9 @@ vipNamespace.on('connection', function(socket){
 
     require('./server/socket/newUser')(socket, appArrays, appHelpers);
 
-    socket.on('join room', function(roomName){
-        socket.join(roomName);
-        socket.currentRoom = roomName;
-        console.log('User ' + socket.username + ' joined room ' + roomName);
-    });
+    require('./server/socket/joinRoom')(socket);
 
-    socket.on('leave room', function(roomName){
-        socket.leave(roomName);
-
-        console.log('User ' + socket.username + ' left room ' + roomName);
-
-        appArrays.rooms[roomName].users.splice(appArrays.rooms[roomName].users.indexOf(socket.username), 1);
-        socket.currentRoom = '';
-
-        appHelpers.notifyUsers('User "' + socket.username + '" left room','', roomName);
-        appHelpers.updateUsers(roomName);
+    require('./server/socket/leaveRoom')(socket, appArrays, appHelpers);
 
 
-    });
 });

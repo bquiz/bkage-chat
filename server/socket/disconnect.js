@@ -8,9 +8,8 @@ module.exports = function(socket, appArrays, appHelpers, colors){
         if(socket.username){
             appArrays.rooms[socket.currentRoom].users.splice(appArrays.rooms[socket.currentRoom].users.indexOf(socket.username), 1);
             if(socket.currentRoom.length){
-                appHelpers.notifyUsers('User "' + socket.username + '" left room');
+                appHelpers.notifyUsers('User "' + socket.username + '" left room', 'info', socket.currentRoom);
             }
-
         }
         appHelpers.updateUsers(socket.currentRoom);
         console.log(colors.red('Disconnected: %s sockets connected'), appArrays.connections.length);

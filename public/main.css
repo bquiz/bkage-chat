@@ -6,6 +6,7 @@ body{
 }
 .chat li{
 	list-style:none;
+	width:80%;
 }
 .chat li strong{
 	display:inline-block;
@@ -15,4 +16,17 @@ body{
 	height:450px;
 	position:relative;
 	overflow:auto;
+}
+.error-msg{
+	color:#F44336;
+	padding-left:15px;
+	margin-top:5px;
+	font-weight:700;
+	display:none;
+}
+.chat .self-msg{
+	float:right;
+}
+.chat .user-msg{
+	float:left;
 }
